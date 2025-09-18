@@ -62,3 +62,16 @@ These principles ensure the app is **clean, maintainable, and scalable**, which 
 1. Clone the repo:  
    ```bash
    git clone https://github.com/your-username/smart-ahwa-manager.git
+
+
+   ## 🖼️ Screenshots
+
+### 📋 Dashboard
+![Order Screenshot](asset/images/orders.png)
+
+### ➕ Add Order
+![Add Order Screenshot](asset/images/addOrder.png)
+
+### 📊 Analysis
+![Analysis Screenshot](asset/images/analysis.png)
+
