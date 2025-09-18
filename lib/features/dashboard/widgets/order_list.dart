@@ -18,7 +18,7 @@ class OrdersList extends StatelessWidget {
         itemBuilder: (_, index) {
           final order = orders[index];
           return ListTile(
-            title: Text('${order.customerName} — ${order.drinkType}'),
+            title: Text('${order.customerName} — ${order.drinkType}',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 17),),
             subtitle: Text(
               (order.instructions)!.isEmpty
                   ? 'No instructions'
@@ -27,7 +27,7 @@ class OrdersList extends StatelessWidget {
             trailing: IconButton(
               icon: Icon(
                 Icons.check_circle ,
-                color:Colors.grey,
+                color:Colors.teal,
               ),
               onPressed: () => onComplete(order.id), // <-- هنا نمرر الـ id
             ),

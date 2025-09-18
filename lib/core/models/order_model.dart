@@ -9,6 +9,7 @@ enum Drinks {
   juice,
 }
 
+
 extension DrinksType on Drinks {
   String get label {
     switch (this) {
@@ -26,12 +27,28 @@ extension DrinksType on Drinks {
           return "water";
     }
   }
+
+  double get price {
+    switch (this) {
+      case Drinks.shai:
+        return 20.0;
+      case Drinks.turkishCoffee:
+        return 60.0;
+      case Drinks.hibiscusTea:
+        return 50.0;
+      case Drinks.coffee:
+        return 40.0;
+      case Drinks.juice:
+        return 70.0;
+    }
+  }
 }
 
 class Order {
   late final int _id;
   late String _customerName;
-  late Drinks _drinkType;
+  late String _drinkType;
+  late double _drinkPrice;
   late String? _instructions; ///
   late bool _isCompleted;
   static  int numberOfOrders=0;
@@ -44,7 +61,8 @@ class Order {
     DateTime? createdAt,
   }) {
     _customerName = customerName;
-    _drinkType = drinkType; // use enum here
+    _drinkType = drinkType.label; // use enum here
+    _drinkPrice=drinkType.price;
     _instructions = instructions;
     _isCompleted = completed;
     _createdAt=createdAt;
@@ -57,7 +75,8 @@ class Order {
   String get customerName => _customerName;
   DateTime? get createdAt => _createdAt;
   String? get instructions => _instructions;
-  String get drinkType => _drinkType.label;
+  String get drinkType => _drinkType;
+  double get drinkPrice => _drinkPrice;
   String? get notes => _instructions;
   bool get isCompleted => _isCompleted;
 

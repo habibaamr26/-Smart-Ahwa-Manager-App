@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'features/dashboard/views/dashboard_view.dart';
+import 'features/main_screen/view/main_screen.dart';
 
 void main() {
   runApp( MyApp());
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Dashboard(),
+      home: MainScreen(),
     );
   }
 }
