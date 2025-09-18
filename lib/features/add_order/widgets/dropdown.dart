@@ -15,12 +15,16 @@ class DrinksDropdown extends StatelessWidget {
   Widget build(BuildContext context) {
     return DropdownButton<Drinks>(
       value: selectedDrink,
-      items: Drinks.values.map((d) {
-        return DropdownMenuItem(
-          value: d,
-          child: Text(d.label,style: TextStyle(fontSize: 17,color: Colors.teal,),)
-        );
-      }).toList(),
+      items:
+          Drinks.values.map((d) {
+            return DropdownMenuItem(
+              value: d,
+              child: Text(
+                d.label,
+                style: TextStyle(fontSize: 17, color: Colors.teal),
+              ),
+            );
+          }).toList(),
       onChanged: onChanged,
     );
   }

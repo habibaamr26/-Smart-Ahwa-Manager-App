@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+
+import '../../../core/repository/repo_interface.dart';
 import '../widgets/state_card.dart';
 import '../widgets/track_items.dart';
-
 class AnalysisView extends StatefulWidget {
-  const AnalysisView({Key? key}) : super(key: key);
+  final OrderRepository repository;
+
+  const AnalysisView({Key? key, required this.repository}) : super(key: key);
 
   @override
   State<AnalysisView> createState() => _AnalysisViewState();
@@ -22,18 +25,17 @@ class _AnalysisViewState extends State<AnalysisView>
             Expanded(
               child: Row(
                 children: [
-                  buildDailySalesCard(),
-                  SizedBox(width: 6,),
-                  buildTotalOrdersCard(),  // خلصت تمام
+                  buildDailySalesCard(widget.repository),
+                  const SizedBox(width: 6),
+                  buildTotalOrdersCard(widget.repository),
                 ],
               ),
             ),
-            SizedBox(height: 10,),
-            PopularItemsCard(),
+            const SizedBox(height: 10),
+            PopularItemsCard(repository: widget.repository),
           ],
         ),
       ),
     );
   }
 }
-

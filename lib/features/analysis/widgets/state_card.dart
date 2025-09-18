@@ -1,10 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-
-import '../../../core/data/data.dart';
-import '../../../core/models/order_model.dart';
-
+import '../../../core/repository/repo_interface.dart';
 Widget buildStatCard({
   required String title,
   required String value,
@@ -47,27 +42,27 @@ Widget buildStatCard({
               color: color,
             ),
           ),
-          const SizedBox(height: 8),
-
         ],
       ),
     ),
   );
 }
 
-Widget buildDailySalesCard() {
+Widget buildDailySalesCard(OrderRepository repository) {
+  final dailySales = repository.dailySales(DateTime.now());
+
   return buildStatCard(
-    title: 'المبيعات اليومية',
-    value: '${DataStore().dailySales(DateTime.now())} ج.م',
+    title: 'Daily Sales',
+    value: '$dailySales  E.G',
     icon: Icons.trending_up,
     color: const Color(0xFFE74C3C),
   );
 }
 
-Widget buildTotalOrdersCard() {
+Widget buildTotalOrdersCard(OrderRepository repository) {
   return buildStatCard(
-    title: 'إجمالي الطلبات',
-    value: '${Order.numberOfOrders} طلب ',
+    title:"Total Orders",
+    value: '${repository.getOrders().length} Order',
     icon: Icons.assignment_turned_in,
     color: const Color(0xFF27AE60),
   );

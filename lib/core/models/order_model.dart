@@ -1,14 +1,4 @@
-
-
-
-enum Drinks {
-  shai,
-  turkishCoffee,
-  hibiscusTea,
-  coffee,
-  juice,
-}
-
+enum Drinks { shai, turkishCoffee, hibiscusTea, coffee, juice }
 
 extension DrinksType on Drinks {
   String get label {
@@ -23,8 +13,8 @@ extension DrinksType on Drinks {
         return 'coffee';
       case Drinks.juice:
         return 'Juice';
-        default:
-          return "water";
+      default:
+        return "water";
     }
   }
 
@@ -49,11 +39,13 @@ class Order {
   late String _customerName;
   late String _drinkType;
   late double _drinkPrice;
-  late String? _instructions; ///
+  late String? _instructions;
+
+  ///
   late bool _isCompleted;
-  static  int numberOfOrders=0;
+  static int numberOfOrders = 0;
   late DateTime? _createdAt;
-  Order( {
+  Order({
     required String customerName,
     required Drinks drinkType,
     String instructions = '',
@@ -62,12 +54,12 @@ class Order {
   }) {
     _customerName = customerName;
     _drinkType = drinkType.label; // use enum here
-    _drinkPrice=drinkType.price;
+    _drinkPrice = drinkType.price;
     _instructions = instructions;
     _isCompleted = completed;
-    _createdAt=createdAt;
+    _createdAt = createdAt;
     numberOfOrders++;
-    _id=numberOfOrders;
+    _id = numberOfOrders;
   }
 
   // Getters
@@ -85,5 +77,3 @@ class Order {
     _isCompleted = true;
   }
 }
-
-

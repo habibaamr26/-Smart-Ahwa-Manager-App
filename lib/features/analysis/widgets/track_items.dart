@@ -1,21 +1,20 @@
-
-
-
 import 'package:flutter/material.dart';
 
-import '../../../core/data/data.dart';
+import '../../../core/repository/repo_interface.dart';
 
 class PopularItemsCard extends StatelessWidget {
-  const PopularItemsCard({super.key});
+  final OrderRepository repository;
+
+  const PopularItemsCard({super.key, required this.repository});
 
   @override
   Widget build(BuildContext context) {
+    final entries = repository.drinksTracking().entries.toList();
+
     return Expanded(
       child: Container(
-        padding: EdgeInsets.all(5),
-        decoration: BoxDecoration(
-          color: Colors.white,
-        ),
+        padding: const EdgeInsets.all(5),
+        decoration: const BoxDecoration(color: Colors.white),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -35,7 +34,7 @@ class PopularItemsCard extends StatelessWidget {
                 ),
                 const SizedBox(width: 12),
                 const Text(
-                  'popular items',
+                  'Popular items',
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -47,12 +46,11 @@ class PopularItemsCard extends StatelessWidget {
             const SizedBox(height: 16),
             Expanded(
               child: ListView.separated(
-                itemCount:  DataStore().drinksTracking().length,
+                itemCount: entries.length,
                 separatorBuilder: (context, index) => const SizedBox(height: 8),
                 itemBuilder: (context, index) {
-                  final entries = DataStore().drinksTracking().entries.toList();
                   final item = entries[index]; // MapEntry<String,int>
-                  return PopularItemRow(item: item,index:  index);
+                  return PopularItemRow(item: item, index: index);
                 },
               ),
             ),
@@ -64,9 +62,10 @@ class PopularItemsCard extends StatelessWidget {
 }
 
 class PopularItemRow extends StatelessWidget {
-  late MapEntry<String,int> item;
-  late int index;
-   PopularItemRow({required this.index,required this.item});
+  final MapEntry<String, int> item;
+  final int index;
+
+  const PopularItemRow({super.key, required this.index, required this.item});
 
   @override
   Widget build(BuildContext context) {
@@ -104,4 +103,3 @@ class PopularItemRow extends StatelessWidget {
     );
   }
 }
-
