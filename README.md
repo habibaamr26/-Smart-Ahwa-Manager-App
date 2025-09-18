@@ -19,7 +19,6 @@ It provides a **Dashboard**, **Add Order**, and **Analysis View** to manage dail
 ## 🧑‍💻 Tech Stack
 - **Flutter (Dart)** → for UI development.  
 - **OOP + SOLID Principles** → for clean, maintainable architecture.  
-- **Repository Pattern** → to separate business logic and data layer from UI.  
 
 ---
 
